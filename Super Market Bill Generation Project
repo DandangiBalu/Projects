@@ -1,0 +1,48 @@
+from datetime import datetime
+
+# Supermarket Bill Generation Program
+# get the customer name
+name = input("Enter your name:")
+address=input("Enter your address:")
+
+# Item prices
+prices = {
+    "eggs"  : 5.00,
+    "oil"   : 130.00,
+    "bread" : 10.00,
+    "sugar" : 30.00,
+    "milk"  : 36.00,
+    "rice"  : 55.00,
+    "salt"  : 25.00
+}
+
+# User input
+print("Welcome to the supermarket!")
+cart = {}
+while True:
+    item = input("Enter item name (or 'done' to finish shopping): ")
+    if item == "done":
+        break
+    elif item not in prices:
+        print("Sorry, we don't have that item.")
+    else:
+        quantity = int(input("Enter quantity: "))
+        cart[item] = quantity
+
+# Bill generation
+total = 0
+print("\t\t*PriyaSupermarket Bill*\t")
+print("-"*60)
+print("Customer name:",name)
+print("Customer address:",address)
+print("Item\t\tQuantity\tPrice\t\tTotal")
+print("-"*60)
+for item, quantity in cart.items():
+    price = prices[item]
+    item_total = price * quantity
+    total += item_total
+    print(f"{item.capitalize()}\t\t{quantity}\t\t{price:.2f}\t\t{item_total:.2f}")
+print("-"*60)
+print(f"Total:\t\t\t\t\t\t{total:.2f}")
+print("-"*60)
+print("\t\t*Thank you for visiting*\t\t")
